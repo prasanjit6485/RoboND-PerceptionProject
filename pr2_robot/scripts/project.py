@@ -25,6 +25,10 @@ from rospy_message_converter import message_converter
 import yaml
 
 PICK_LIST_NUM = 3
+PICK_PLACE_ROUTINE = True
+PROJ_PATH = '/home/robond/catkin_ws/src/RoboND-PerceptionProject'
+INPUT_MODEL_FILENAME = PROJ_PATH+'/train_datasets/model.sav'
+OUTPUT_YAML_FILENAME = PROJ_PATH+'/output_yaml/output_'+str(PICK_LIST_NUM)+'.yaml'
 
 # Helper function to get surface normals
 def get_normals(cloud):
@@ -239,7 +243,6 @@ def pr2_mover(object_list):
     dropbox_grp_idx = {}
 
     dict_list = []
-    yaml_filename = 'output_' + str(PICK_LIST_NUM) + '.yaml'
 
     detected = 0
 
@@ -293,22 +296,23 @@ def pr2_mover(object_list):
         yaml_dict = make_yaml_dict(test_scene_num, arm_name, object_name, pick_pose, place_pose)
         dict_list.append(yaml_dict)
 
-        # Wait for 'pick_place_routine' service to come up
-        rospy.wait_for_service('pick_place_routine')
+        if PICK_PLACE_ROUTINE:
+            # Wait for 'pick_place_routine' service to come up
+            rospy.wait_for_service('pick_place_routine')
 
-        try:
-            pick_place_routine = rospy.ServiceProxy('pick_place_routine', PickPlace)
+            try:
+                pick_place_routine = rospy.ServiceProxy('pick_place_routine', PickPlace)
 
-            # TODO: Insert your message variables to be sent as a service request
-            resp = pick_place_routine(test_scene_num, object_name, arm_name, pick_pose, place_pose)
+                # TODO: Insert your message variables to be sent as a service request
+                resp = pick_place_routine(test_scene_num, object_name, arm_name, pick_pose, place_pose)
 
-            print ("Response: ",resp.success)
+                print ("Response: ",resp.success)
 
-        except rospy.ServiceException, e:
-            print "Service call failed: %s"%e
+            except rospy.ServiceException, e:
+                print "Service call failed: %s"%e
 
     # TODO: Output your request parameters into output yaml file
-    send_to_yaml(yaml_filename, dict_list)
+    send_to_yaml(OUTPUT_YAML_FILENAME, dict_list)
 
     print("Detected: %s/%s" % (detected,len(object_list_param)))
 
@@ -330,8 +334,7 @@ if __name__ == '__main__':
     detected_objects_pub = rospy.Publisher("/detected_objects", DetectedObjectsArray, queue_size=1)
 
     # Load Model From disk
-    model_file_name = 'model_' + str(PICK_LIST_NUM) + '.sav'
-    model = pickle.load(open(model_file_name, 'rb'))
+    model = pickle.load(open(INPUT_MODEL_FILENAME, 'rb'))
     clf = model['classifier']
     encoder = LabelEncoder()
     encoder.classes_ = model['classes']
