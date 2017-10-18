@@ -29,7 +29,9 @@
 [test2_objectrecognition]: ./images/test2_objectrecognition.png
 [test3_objectrecognition]: ./images/test3_objectrecognition.png
 
----
+[output]: ./images/output.png
+
+![demo-1](https://user-images.githubusercontent.com/20687560/28748231-46b5b912-7467-11e7-8778-3095172b7b19.png)
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/1067/view) Points
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
@@ -122,7 +124,11 @@ Object recognition after performing above steps:
 
 #### 1. For all three tabletop setups (`test*.world`), perform object recognition, then read in respective pick list (`pick_list_*.yaml`). Next construct the messages that would comprise a valid `PickPlace` request output them to `.yaml` format.
 
-From the perception pipeline, Performed object recognition and posted all the relevant screenshots for all three tabletop setups. I was able to correctly identified 100% of objects from pick_list_1.yaml for test1.world, 100% of items from pick_list_2.yaml for test2.world and 100% of items from pick_list_3.yaml in test3.world. Output yaml files are under output_yaml folder for each tabletop setups.
+From the perception pipeline, Performed object recognition and posted all the relevant screenshots for all three tabletop setups. I was able to correctly identified 100% of objects from pick_list_1.yaml for test1.world, 100% of items from pick_list_2.yaml for test2.world and 100% of items from pick_list_3.yaml in test3.world. 
+
+![alt text][output]
+
+Output yaml files are under output_yaml folder for each tabletop setups.
 
 - [Test world 1](https://github.com/prasanjit6485/RoboND-PerceptionProject/blob/master/output_yaml/output_1.yaml)
 - [Test world 2](https://github.com/prasanjit6485/RoboND-PerceptionProject/blob/master/output_yaml/output_2.yaml)
