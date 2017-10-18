@@ -1,8 +1,37 @@
 ## Project: Perception Pick & Place
-### Writeup Template: You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
+
+[//]: # (Image References)
+
+[flowchart]: ./images/PerceptionPipeline.jpg
+
+[test1_extractinliers_cv]: ./images/test1_extractinliers_cameraview.png
+[test2_extractinliers_cv]: ./images/test2_extractinliers_cameraview.png
+[test3_extractinliers_cv]: ./images/test3_extractinliers_cameraview.png
+[test1_extractinliers]: ./images/test1_extractinliers.png
+[test2_extractinliers]: ./images/test2_extractinliers.png
+[test3_extractinliers]: ./images/test3_extractinliers.png
+[test1_extractoutliers]: ./images/test1_extractoutliers.png
+[test2_extractoutliers]: ./images/test2_extractoutliers.png
+[test3_extractoutliers]: ./images/test3_extractoutliers.png
+
+[test1_clustering_cv]: ./images/test1_clustering_cameraview.png
+[test2_clustering_cv]: ./images/test2_clustering_cameraview.png
+[test3_clustering_cv]: ./images/test3_clustering_cameraview.png
+[test1_clustering]: ./images/test1_clustering.png
+[test2_clustering]: ./images/test2_clustering.png
+[test3_clustering]: ./images/test3_clustering.png
+
+[confusion_matrix]: ./images/confusion_matrix.png
+[test1_objectrecog_cv]: ./images/test1_objectrecognition_cameraview.png
+[test2_objectrecog_cv]: ./images/test2_objectrecognition_cameraview.png
+[test3_objectrecog_cv]: ./images/test3_objectrecognition_cameraview.png
+[test1_objectrecognition]: ./images/test1_objectrecognition.png
+[test2_objectrecognition]: ./images/test2_objectrecognition.png
+[test3_objectrecognition]: ./images/test3_objectrecognition.png
+
+
 
 ---
-
 
 # Required Steps for a Passing Submission:
 1. Extract features and train an SVM model on new objects (see `pick_list_*.yaml` in `/pr2_robot/config/` for the list of models you'll be trying to identify). 
@@ -32,24 +61,64 @@
 
 #### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  
 
-You're reading it!
+I am submitting the writeup as markdown and You're reading it!
 
-### Exercise 1, 2 and 3 pipeline implemented
-#### 1. Complete Exercise 1 steps. Pipeline for filtering and RANSAC plane fitting implemented.
+### Perception pipeline
 
-#### 2. Complete Exercise 2 steps: Pipeline including clustering for segmentation implemented.  
+Below is overall flowchart for perception pipeline:
 
-#### 2. Complete Exercise 3 Steps.  Features extracted and SVM trained.  Object recognition implemented.
-Here is an example of how to include an image in your writeup.
+![alt text][flowchart]
 
-![demo-1](https://user-images.githubusercontent.com/20687560/28748231-46b5b912-7467-11e7-8778-3095172b7b19.png)
+#### 1. Pipeline for filtering and RANSAC plane fitting implemented.
+
+Extract inliers (Objects) after performing above steps:
+
+| Test world 1                         | Test world 2                         | Test world 3                         |
+| :----------------------------------: | :-----------------------------------:| :-----------------------------------:|
+| ![alt text][test1_extractinliers_cv] | ![alt text][test2_extractinliers_cv] | ![alt text][test2_extractinliers_cv] |
+
+| Test world 1                      | Test world 2                      | Test world 3                      |
+| :-------------------------------: | :--------------------------------:| :--------------------------------:|
+| ![alt text][test1_extractinliers] | ![alt text][test2_extractinliers] | ![alt text][test3_extractinliers] |
+
+Extract outliers (Table) after performing above steps:
+
+| Test world 1                       | Test world 2                       | Test world 3                       |
+| :--------------------------------: | :---------------------------------:| :---------------------------------:|
+| ![alt text][test1_extractoutliers] | ![alt text][test2_extractoutliers] | ![alt text][test3_extractoutliers] |
+
+
+#### 2. Pipeline including clustering for segmentation implemented.  
+
+Clustering after performing above steps:
+
+| Test world 1                     | Test world 2                     | Test world 3                     |
+| :------------------------------: | :-------------------------------:| :-------------------------------:|
+| ![alt text][test1_clustering_cv] | ![alt text][test2_clustering_cv] | ![alt text][test3_clustering_cv] |
+
+| Test world 1                  | Test world 2                  | Test world 3                  |
+| :---------------------------: | :----------------------------:| :----------------------------:|
+| ![alt text][test1_clustering] | ![alt text][test2_clustering] | ![alt text][test3_clustering] |
+
+#### 3. Features extracted and SVM trained.  Object recognition implemented.
+
+Confusion Matrix:
+
+![alt text][confusion_matrix]
 
 ### Pick and Place Setup
 
 #### 1. For all three tabletop setups (`test*.world`), perform object recognition, then read in respective pick list (`pick_list_*.yaml`). Next construct the messages that would comprise a valid `PickPlace` request output them to `.yaml` format.
 
-And here's another image! 
-![demo-2](https://user-images.githubusercontent.com/20687560/28748286-9f65680e-7468-11e7-83dc-f1a32380b89c.png)
+Object recognition after performing above steps:
+
+| Test world 1                      | Test world 2                      | Test world 3                      |
+| :-------------------------------: | :--------------------------------:| :--------------------------------:|
+| ![alt text][test1_objectrecog_cv] | ![alt text][test2_objectrecog_cv] | ![alt text][test3_objectrecog_cv] |
+
+| Test world 1                         | Test world 2                         | Test world 3                         |
+| :----------------------------------: | :-----------------------------------:| :-----------------------------------:|
+| ![alt text][test1_objectrecognition] | ![alt text][test2_objectrecognition] | ![alt text][test3_objectrecognition] |
 
 Spend some time at the end to discuss your code, what techniques you used, what worked and why, where the implementation might fail and how you might improve it if you were going to pursue this project further.  
 
