@@ -23,7 +23,7 @@ Now that you have a workspace, clone or download this repo into the src director
 $ cd ~/catkin_ws/src
 $ git clone https://github.com/prasanjit6485/RoboND-PerceptionProject
 ```
-### Note: If you have the Kinematics Pick and Place project in the same ROS Workspace as this project, please remove the 'gazebo_grasp_plugin' directory from the `RoboND-Perception-Project/` directory otherwise ignore this note. 
+### Note: If you have the Kinematics Pick and Place project in the same ROS Workspace as this project, please remove the 'gazebo_grasp_plugin' directory from the `RoboND-PerceptionProject/` directory otherwise ignore this note. 
 
 Now install missing dependencies using rosdep install:
 ```sh
@@ -37,7 +37,7 @@ $ catkin_make
 ```
 Add following to your .bashrc file
 ```
-export GAZEBO_MODEL_PATH=~/catkin_ws/src/RoboND-Perception-Project/pr2_robot/models:$GAZEBO_MODEL_PATH
+export GAZEBO_MODEL_PATH=~/catkin_ws/src/RoboND-PerceptionProject/pr2_robot/models:$GAZEBO_MODEL_PATH
 ```
 
 If you haven’t already, following line can be added to your .bashrc to auto-source all new terminals
@@ -47,7 +47,7 @@ source ~/catkin_ws/devel/setup.bash
 
 To run the demo:
 ```sh
-$ cd ~/catkin_ws/src/RoboND-Perception-Project/pr2_robot/scripts
+$ cd ~/catkin_ws/src/RoboND-PerceptionProject/pr2_robot/scripts
 $ chmod u+x pr2_safe_spawner.sh
 $ ./pr2_safe_spawner.sh
 ```
