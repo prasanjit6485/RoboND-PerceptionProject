@@ -21,7 +21,7 @@ $ catkin_make
 Now that you have a workspace, clone or download this repo into the src directory of your workspace:
 ```sh
 $ cd ~/catkin_ws/src
-$ git clone https://github.com/udacity/RoboND-Perception-Project.git
+$ git clone https://github.com/prasanjit6485/RoboND-PerceptionProject
 ```
 ### Note: If you have the Kinematics Pick and Place project in the same ROS Workspace as this project, please remove the 'gazebo_grasp_plugin' directory from the `RoboND-Perception-Project/` directory otherwise ignore this note. 
 
